@@ -36,7 +36,7 @@ if len(historique) < 30:
     val = st.number_input(f"Entrez la valeur {len(historique)+1}/30", format="%.2f")
     if st.button("Ajouter cette valeur"):
         historique.append(val)
-        st.experimental_rerun()
+        st.rerun()
 else:
     entree = np.array(historique).reshape(1, -1)
     prediction = modele.predict(entree)[0]
@@ -47,7 +47,7 @@ else:
         modele.partial_fit(entree, [nouvelle_val])
         historique.append(nouvelle_val)
         st.success("✔️ Valeur ajoutée et modèle mis à jour")
-        st.experimental_rerun()
+        st.rerun()
 
 if st.button("💾 Sauvegarder le modèle actuel"):
     with open(modele_path, "wb") as f:
