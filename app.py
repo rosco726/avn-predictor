@@ -1,27 +1,24 @@
 import streamlit as st
 
-# Titre et sélection du projet
-st.title("🔢 Prédiction pour le projet : aviator")
+st.title("Prédiction pour le projet : aviator")
 
-# Initialiser les valeurs si pas encore fait
+# Initialisation de session_state
 if "valeurs" not in st.session_state:
 st.session_state.valeurs = []
 
-# Champ de saisie
-valeur = st.text_input("Entrez la valeur 1/30", value="")
+# Création d'un champ de texte pour entrer une valeur
+valeur = st.text_input("Entrez la valeur 1/30", "")
 
-# Bouton pour ajouter la valeur
+# Bouton pour ajouter la valeur à la liste
 if st.button("Ajoutez cette valeur"):
 try:
-# Convertir en float même si la saisie contient une virgule
-valeur_float = float(valeur.replace(",", "."))
-st.session_state.valeurs.append(valeur_float)
-st.success(f"Valeur ajoutée : {valeur_float}")
-st.rerun()
+val = float(valeur.replace(",", "."))
+st.session_state.valeurs.append(val)
+st.success(f"Valeur {val} ajoutée.")
 except ValueError:
-st.error("❌ Entrez un nombre valide (ex: 1.23)")
+st.error("Veuillez entrer une valeur numérique valide.")
 
-# Affichage des valeurs enregistrées
+# Affichage des valeurs entrées
 if st.session_state.valeurs:
-st.subheader("Valeurs enregistrées :")
+st.write("Valeurs enregistrées :")
 st.write(st.session_state.valeurs)
