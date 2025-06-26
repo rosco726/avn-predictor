@@ -15,8 +15,8 @@ if st.button("Ajoutez cette valeur"):
 		val = float(valeur.remplace(",", ".")) # Remplace virgule par point
 		st.session_state.valeurs.append(val)
 		st.success(f"Valeur {val} ajoutée.")
-except ValueError:
-	st.error("Veuillez entrer une valeur numérique valide.")
+	except ValueError:
+		st.error("Veuillez entrer une valeur numérique valide.")
 
 # Affichage des valeurs entrées
 if st.session_state.valeurs:
