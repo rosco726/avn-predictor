@@ -7,7 +7,7 @@ if "valeurs" not in st.session_state:
 	st.session_state.valeurs = []
 
 # Création d'un champ de texte pour entrer une valeur
-valeur = st.text_input("Entrez la valeur. "")
+valeur = st.text_input("Entrez la valeur "1/30", "")
 
 # Bouton pour ajouter la valeur à la liste
 if st.button("Ajoutez cette valeur"):
