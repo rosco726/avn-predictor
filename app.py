@@ -7,7 +7,7 @@ if "valeurs" not in st.session_state:
 	st.session_state.valeurs = []
 
 # Création d'un champ de texte pour entrer une valeur
-valeur = st.text_input("Entrez la valeur 1/30", "")
+valeur = st.text_input("Entrez la valeur "")
 
 # Bouton pour ajouter la valeur à la liste
 if st.button("Ajoutez cette valeur"):
@@ -15,8 +15,6 @@ if st.button("Ajoutez cette valeur"):
 		val = float(valeur.remplace(",", ".")) # Remplace virgule par point
 		st.session_state.valeurs.append(val)
 		st.success(f"Valeur {val} ajoutée.")
-	except ValueError:
-		st.error("Veuillez entrer une valeur numérique valide.")
 
 # Affichage des valeurs entrées
 if st.session_state.valeurs:
