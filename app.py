@@ -11,7 +11,7 @@ valeur = st.text_input("Entrez la valeur 1/30", "")
 
 # Bouton pour ajouter la valeur à la liste
 if st.button("Ajoutez cette valeur"):
-	try:
+try:
 	val = float(valeur.remplace(",", ".")) # Remplace virgule par point
 	st.session_state.valeurs.append(val)
 	st.success(f"Valeur {val} ajoutée.")
