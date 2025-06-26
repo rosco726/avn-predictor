@@ -22,3 +22,8 @@ st.error("Veuillez entrer une valeur numérique valide.")
 if st.session_state.valeurs:
 st.write("Valeurs enregistrées :")
 st.write(st.session_state.valeurs)
+
+# ✅ Bouton pour réinitialiser la liste
+if st.button("Réinitialiser les valeurs"):
+st.session_state.valeurs = []
+st.success("Liste réinitialisée.")
