@@ -117,7 +117,8 @@ def train_lstm_model(data):
     X = X.reshape((X.shape[0], X.shape[1], 1))
 
     model = Sequential()
-    model.add(LSTM(50, activation='relu', input_shape=(X.shape[1], 1)))
+    model.add(LSTM(64, return_sequences=True, input_shape=(X.shape[1], 1)))
+    model.add(LSTM(32))
     model.add(Dense(1))
     model.compile(optimizer='adam', loss='mse')
     model.fit(X, y, epochs=100, verbose=0)
@@ -144,3 +145,9 @@ if st.button("🔬 Prédire avec IA (LSTM)"):
             st.write(lstm_preds)
         except Exception as e:
             st.error(f"Erreur IA : {e}")
+import matplotlib.pyplot as plt
+ax.plot(range(len(st.session_state.valeurs)), st.session_state.valeurs, label="Données")
+ax.plot(range(len(st.session_state.valeurs), len(st.session_state.valeurs) + 3), lstm_preds, label="Prédictions")
+ax.legend()
+st.pyplot(fig)
+
